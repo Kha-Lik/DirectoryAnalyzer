@@ -32,12 +32,16 @@ if(ANDROID)
     main.cpp
     mainwindow.cpp
     mainwindow.h
+    FileHelper.h
+    FileHelper.cpp
   )
 else()
   add_executable(DirectoryAnalyzer
     main.cpp
     mainwindow.cpp
     mainwindow.h
+    FileHelper.h
+    FileHelper.cpp
   )
 endif()
 
