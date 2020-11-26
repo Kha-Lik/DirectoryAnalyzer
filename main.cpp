@@ -8,7 +8,6 @@ int main(int argc, char *argv[])
     MainWindow w;
 
     QObject::connect(w.inputButton, &QPushButton::clicked, &w, &MainWindow::openFileDialog);
-    QObject::connect(w.showHistoryButton, &QPushButton::clicked, &w, &MainWindow::showHistory);
     QObject::connect(w.showSelectedDirButton, &QPushButton::clicked, &w, &MainWindow::showSelectedDir);
 
     w.show();

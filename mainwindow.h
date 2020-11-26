@@ -13,21 +13,17 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
-    //macros
-
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
     QLineEdit *selectedPathField;
     QPushButton *inputButton;
-    QPushButton *showHistoryButton;
     QPushButton *showSelectedDirButton;
     QTreeView *directoryTree;
 
 public slots:
     void openFileDialog();
-    void showHistory();
     void showSelectedDir();
 
 private:
@@ -36,6 +32,7 @@ private:
     QListWidget *historyList;
 
     void showTree();
+    void showHistory();
     void writePathToFile(FileHelper helper);
 };
 #endif // MAINWINDOW_H

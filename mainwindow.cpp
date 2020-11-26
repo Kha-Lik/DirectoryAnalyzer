@@ -29,16 +29,14 @@ MainWindow::MainWindow(QWidget *parent)
     inputButton->setGeometry(315, 10, 90, 25);
     inputButton->setText("Select directory");
 
-    showHistoryButton = new QPushButton(this);
-    showHistoryButton->setGeometry(415, 45, 90, 90);
-    showHistoryButton->setText("Show\nHistory");
-
     showSelectedDirButton = new QPushButton(this);
-    showSelectedDirButton->setGeometry(515, 45, 90, 90);
+    showSelectedDirButton->setGeometry(415, 45, 90, 90);
     showSelectedDirButton->setText("Show\nSelected");
 
     directoryTree = new QTreeView(this);
     directoryTree->setGeometry(10, 145, 595, 545);
+
+    showHistory();
 }
 
 MainWindow::~MainWindow()
