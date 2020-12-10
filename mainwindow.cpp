@@ -34,7 +34,7 @@ MainWindow::MainWindow(QWidget *parent)
     showSelectedDirButton->setText("Show\nSelected");
 
     directoryTree = new QTreeView(this);
-    directoryTree->setGeometry(10, 145, 595, 545);
+    directoryTree->setGeometry(10, 145, 595, 445);
 
     showHistory();
 }

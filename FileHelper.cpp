@@ -19,17 +19,17 @@ void FileHelper::writeStringToFile(std::string str, std::string path){
 }
 
 vector<string> FileHelper::readAllLines(string path){
-    QFile saveFile(QString::fromStdString(path));
+    QFile fileWithLog(QString::fromStdString(path));
     vector<string> content;
 
-    if(saveFile.open(QIODevice::ReadOnly | QIODevice::Text)){
-        QTextStream in(&saveFile);
+    if(fileWithLog.open(QIODevice::ReadOnly | QIODevice::Text)){
+        QTextStream in(&fileWithLog);
 
         while (!in.atEnd()) {
             content.push_back(in.readLine().toStdString());
         }
 
-        saveFile.close();
+        fileWithLog.close();
     }
     else{
         throw -1;
