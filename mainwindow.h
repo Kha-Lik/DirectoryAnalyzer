@@ -8,6 +8,7 @@
 #include <QPushButton>
 #include <QTreeView>
 #include "FileHelper.h"
+#include <DbHelper.h>
 
 class MainWindow : public QMainWindow
 {
@@ -30,6 +31,7 @@ private:
     QString path;
     QLabel *inputLabel;
     QListWidget *historyList;
+    DbHelper *dbHelper;
 
     void showTree();
     void showHistory();

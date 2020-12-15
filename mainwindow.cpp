@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "QDirExtensions.h"
 
 #include <QFileDialog>
 #include <QFileSystemModel>
@@ -36,6 +37,8 @@ MainWindow::MainWindow(QWidget *parent)
     directoryTree = new QTreeView(this);
     directoryTree->setGeometry(10, 145, 595, 445);
 
+    dbHelper = new DbHelper();
+
     showHistory();
 }
 
@@ -44,19 +47,22 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::openFileDialog(){
-    QFileDialog *fileDialog = new QFileDialog(this);
+    auto *fileDialog = new QFileDialog(this);
     path = fileDialog->getExistingDirectory(this, tr("Select initial directory"), "/",
                                             QFileDialog::ShowDirsOnly
                                             | QFileDialog::DontResolveSymlinks);
     selectedPathField->setText(path);
+    dbHelper->WriteLog(path, QDirExtensions::formatSize(QDirExtensions::dirSize(path)));
+
     FileHelper helper;
     writePathToFile(helper);
+
     showTree();
     showHistory();
 }
 
 void MainWindow::showTree(){
-    QFileSystemModel *model = new QFileSystemModel;
+    auto *model = new QFileSystemModel;
     model->setRootPath(path);
     directoryTree->setModel(model);
     directoryTree->setRootIndex(model->index(path));
@@ -74,9 +80,9 @@ void MainWindow::showHistory(){
     historyList->clear();
 
     for (unsigned short i = 0; i < history.size(); i++){
-        QListWidgetItem *newItem = new QListWidgetItem;
-        short index = history.size() - i - 1;
-        QString content = QString::fromStdString(history[index]);
+        auto *newItem = new QListWidgetItem;
+        auto index = history.size() - i - 1;
+        auto content = QString::fromStdString(history[index]);
         newItem->setText(content);
         historyList->insertItem(i, newItem);
     }
@@ -84,6 +90,7 @@ void MainWindow::showHistory(){
 
 void MainWindow::showSelectedDir(){
     path = historyList->selectedItems().first()->text();
+    dbHelper->WriteLog(path, QDirExtensions::formatSize(QDirExtensions::dirSize(path)));
     showTree();
 }
 

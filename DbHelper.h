@@ -10,7 +10,6 @@ using namespace std;
 class DbHelper{
     private:
         QSqlDatabase _database;
-        QSqlQuery _query;
         int GetDirId(QString dir);
     public:
         DbHelper();

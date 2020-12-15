@@ -47,6 +47,8 @@ else()
     DbHelper.cpp
     DirLogRow.h
     DirLogRow.cpp
+    QDirExtensions.h
+    QDirExtensions.cpp
   )
 endif()
 
