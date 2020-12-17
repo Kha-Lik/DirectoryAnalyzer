@@ -49,6 +49,8 @@ else()
     DirLogRow.cpp
     QDirExtensions.h
     QDirExtensions.cpp
+    HistoryWindow.h
+    HistoryWindow.cpp
   )
 endif()
 

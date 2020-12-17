@@ -21,11 +21,13 @@ public:
     QLineEdit *selectedPathField;
     QPushButton *inputButton;
     QPushButton *showSelectedDirButton;
+    QPushButton *showHistoryWindowButton;
     QTreeView *directoryTree;
 
 public slots:
     void openFileDialog();
     void showSelectedDir();
+    void showHistoryWindow();
 
 private:
     QString path;

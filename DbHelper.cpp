@@ -48,6 +48,22 @@ int DbHelper::GetDirId(QString dir){
     return dirID;
 }
 
+vector<DirLogRow> DbHelper::ReadLog(){
+    auto logs = new vector<DirLogRow>();
+
+    QString select = "SELECT path, size, open_date "
+                     "FROM DIRECTORIES JOIN LOGS "
+                     "ON DIRECTORIES.ID = LOGS.DIR_ID;";
+    QSqlQuery query;
+    if(!query.exec(select)) throw -3;
+    while(query.next()){
+        auto log = new DirLogRow(query.value(0).toString(), query.value(1).toString(), query.value(2).toString());
+        logs->push_back(*log);
+    }
+
+    return *logs;
+}
+
 DbHelper::~DbHelper(){
     _database.close();
 }

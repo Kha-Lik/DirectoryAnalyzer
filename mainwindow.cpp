@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "QDirExtensions.h"
+#include "HistoryWindow.h"
 
 #include <QFileDialog>
 #include <QFileSystemModel>
@@ -33,6 +34,10 @@ MainWindow::MainWindow(QWidget *parent)
     showSelectedDirButton = new QPushButton(this);
     showSelectedDirButton->setGeometry(415, 45, 90, 90);
     showSelectedDirButton->setText("Show\nSelected");
+
+    showHistoryWindowButton = new QPushButton(this);
+    showHistoryWindowButton->setGeometry(515, 45, 90, 90);
+    showHistoryWindowButton->setText("Show\nHistory");
 
     directoryTree = new QTreeView(this);
     directoryTree->setGeometry(10, 145, 595, 445);
@@ -92,5 +97,10 @@ void MainWindow::showSelectedDir(){
     path = historyList->selectedItems().first()->text();
     dbHelper->WriteLog(path, QDirExtensions::formatSize(QDirExtensions::dirSize(path)));
     showTree();
+}
+
+void MainWindow::showHistoryWindow(){
+    auto historyWindow = new HistoryWindow(*dbHelper);
+    historyWindow->show();
 }
 

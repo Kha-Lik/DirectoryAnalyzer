@@ -8,9 +8,9 @@ class DirLogRow{
     public:
         QString DirectoryName;
         QString Size;
-        QDate OpenDate;
+        QString OpenDate;
 
-        DirLogRow(QString directory, QString size, QDate openDate);
+        DirLogRow(QString directory, QString size, QString openDate);
 };
 
 #endif // DIRLOGROW_H
